@@ -1,8 +1,32 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: 0 0% 100%; /* Putih */
+  --foreground: 222.2 84% 4.9%; /* Hitam */
+
+  --card: 0 0% 100%;
+  --card-foreground: 222.2 84% 4.9%;
+
+  --primary: 210 40% 96.1%;
+  --primary-foreground: 210 40% 9.8%;
+
+  --secondary: 217.2 32.6% 17.5%; /* Warna aksen/biru gelap */
+  --secondary-foreground: 210 40% 98%; /* Putih */
+}
+
+/* 3. Definisi untuk .dark (jika kita ingin dark mode nanti) */
+.dark {
+  --background: 222.2 84% 4.9%; /* Hitam */
+  --foreground: 210 40% 98%; /* Putih */
+
+  --card: 222.2 84% 4.9%;
+  --card-foreground: 210 40% 98%;
+
+  --primary: 210 40% 9.8%;
+  --primary-foreground: 210 40% 96.1%;
+
+  --secondary: 210 40% 96.1%; /* Warna aksen/putih */
+  --secondary-foreground: 222.2 84% 4.9%; /* Hitam */
 }
 
 @theme inline {
@@ -23,4 +47,10 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+  @apply bg-background text-foreground;
+}
+
+/* Tambahkan ini untuk scrolling yang mulus */
+html {
+  scroll-behavior: smooth;
 }
