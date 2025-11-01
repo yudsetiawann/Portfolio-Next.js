@@ -11,8 +11,8 @@ import ScrollObserver from "../components/ScrollObserver";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Portofolio Saya",
-  description: "Portofolio web modern dibuat dengan Next.js",
+  title: "yudstwn | Portfolio",
+  description: "Modern web portfolio built with Next.js",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
