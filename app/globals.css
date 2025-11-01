@@ -1,56 +1,60 @@
+/* app/globals.css */
+
 @import "tailwindcss";
 
 :root {
   --background: 0 0% 100%; /* Putih */
-  --foreground: 222.2 84% 4.9%; /* Hitam */
+
+  /* FIX 1: Ini adalah warna teks Anda untuk Light Mode. 
+    Sebelumnya putih, sekarang diubah menjadi hitam/biru gelap.
+  */
+  --foreground: 222.2 84% 4.9%;
 
   --card: 0 0% 100%;
   --card-foreground: 222.2 84% 4.9%;
-
   --primary: 210 40% 96.1%;
   --primary-foreground: 210 40% 9.8%;
-
-  --secondary: 217.2 32.6% 17.5%; /* Warna aksen/biru gelap */
-  --secondary-foreground: 210 40% 98%; /* Putih */
+  --secondary: 217.2 32.6% 17.5%;
+  --secondary-foreground: 210 40% 98%;
+  --border: 0 0% 85%; /* Ini adalah abu-abu muda */
 }
 
-/* 3. Definisi untuk .dark (jika kita ingin dark mode nanti) */
 .dark {
-  --background: 222.2 84% 4.9%; /* Hitam */
-  --foreground: 210 40% 98%; /* Putih */
+  /* FIX 2: Ini adalah background Anda untuk Dark Mode. 
+    Diubah menjadi hitam murni (0% Saturation, 0% Lightness).
+  */
+  --background: 0 0% 0%; /* Hitam Murni */
 
+  --foreground: 210 40% 98%; /* Putih */
   --card: 222.2 84% 4.9%;
   --card-foreground: 210 40% 98%;
-
   --primary: 210 40% 9.8%;
   --primary-foreground: 210 40% 96.1%;
-
-  --secondary: 210 40% 96.1%; /* Warna aksen/putih */
-  --secondary-foreground: 222.2 84% 4.9%; /* Hitam */
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --secondary: 210 40% 96.1%;
+  --secondary-foreground: 222.2 84% 4.9%;
+  --border: 0 0% 20%; /* Ini adalah abu-abu tua */
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
+  /* Ini sudah benar, tidak perlu diubah */
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
   font-family: Arial, Helvetica, sans-serif;
-  @apply bg-background text-foreground;
 }
 
-/* Tambahkan ini untuk scrolling yang mulus */
 html {
   scroll-behavior: smooth;
+}
+
+/* Kode .reveal Anda */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  transition-delay: var(--delay, 0.5s);
+}
+
+.reveal.revealed {
+  opacity: 1;
+  transform: translateY(0);
 }

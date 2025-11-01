@@ -1,6 +1,7 @@
+// components/ProjectCard.tsx
+
 import Image from "next/image";
 
-// 1. Definisikan "bentuk" data yang kita harapkan menggunakan TypeScript
 interface ProjectCardProps {
   title: string;
   description: string;
@@ -8,32 +9,32 @@ interface ProjectCardProps {
   link: string;
 }
 
-// 2. Komponen menerima 'props'
 export default function ProjectCard({ title, description, imageUrl, link }: ProjectCardProps) {
   return (
-    <div className="flex flex-col rounded-lg shadow-lg overflow-hidden border border-foreground/10 hover:scale-105 hover:border-violet-800 transition transform duration-300">
-      {/* Gambar Proyek */}
+    // PERBAIKAN 1: Tambahkan 'bg-card' untuk memberi latar belakang pada kartu
+    <div className="flex flex-col overflow-hidden transition duration-300 transform border-2 rounded-lg shadow-lg bg-card hover:scale-105 dark:hover:border-violet-800">
+      {/* Gambar Proyek (Sudah Benar) */}
       <div className="relative w-full h-48">
-        <Image
-          src={imageUrl}
-          alt={title}
-          layout="fill" // 'fill' akan mengisi div induk
-          fill
-          style={{ objectFit: "cover" }} // 'cover' akan memotong gambar agar pas
-        />
+        <Image src={imageUrl} alt={title} fill style={{ objectFit: "cover" }} />
       </div>
 
       {/* Konten Teks */}
-      <div className="p-6 flex flex-col grow">
-        <h3 className="text-xl font-semibold mb-2">{title}</h3>
-        <p className="text-foreground/70 mb-4 grow">{description}</p>
+      {/* PERBAIKAN 2: Tambahkan 'bg-card' di sini juga 
+          (beberapa browser membutuhkannya untuk flex-col) */}
+      <div className="flex flex-col p-6 grow bg-card">
+        {/* PERBAIKAN 3: Tambahkan 'text-foreground' pada judul */}
+        <h3 className="mb-2 text-xl font-semibold text-foreground">{title}</h3>
 
-        {/* Link (menggunakan <a> biasa karena ini link eksternal) */}
+        {/* Paragraf Anda (text-foreground/70) SUDAH BENAR */}
+        <p className="mb-4 text-foreground/70 grow">{description}</p>
+
+        {/* Link */}
         <a
           href={link}
-          target="_blank" // Buka di tab baru
+          target="_blank"
           rel="noopener noreferrer"
-          className="mt-auto inline-block text-center bg-violet-600 px-4 py-2 rounded-lg font-medium hover:opacity-90 transition-opacity"
+          // PERBAIKAN 4: Tambahkan 'text-white' agar selalu terbaca
+          className="inline-block px-4 py-2 mt-auto font-medium text-center text-white transition-opacity rounded-lg bg-violet-600 hover:opacity-90"
         >
           View Project
         </a>
